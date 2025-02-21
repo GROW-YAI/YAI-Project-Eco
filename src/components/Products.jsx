@@ -41,7 +41,7 @@ export default function Products() {
   };
 
   return (
-    <section className="py-20 bg-gray-50" id="products">
+    <section className="py-20  bg-gray-50"  id="products">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top border line with PRODUCTS text */}
         <div className="flex items-center mb-12">

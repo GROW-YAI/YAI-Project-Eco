@@ -17,3 +17,4 @@ body {
 .transition-all {
   @apply transition-all duration-300 ease-in-out;
 }
+

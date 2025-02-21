@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Menu, X, } from 'lucide-react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const navLinks = [
@@ -20,10 +20,10 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col">
       <header className="fixed w-full z-50 mt-4">
         <nav className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="backdrop-blur-md bg-white/70 rounded-lg shadow-lg mx-4 p-4">
+          <div className="backdrop-blur-md bg-[#1A959C] rounded-lg shadow-lg mx-4 p-4">
             <div className="flex items-center justify-between">
-              <Link to="/" className="text-2xl font-bold text-[#1A959C]">
-                InnovateLab
+              <Link to="/" className="text-2xl font-bold text-[white]">
+                IKE-DIAN
               </Link>
               
               {/* Desktop Navigation */}
@@ -32,8 +32,8 @@ export default function Layout() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`text-sm font-medium transition-colors hover:text-[#1A959C] ${
-                      location.pathname === link.path ? 'text-[#1A959C]' : 'text-gray-600'
+                    className={`text-sm font-medium transition-colors hover:text-[white] ${
+                      location.pathname === link.path ? 'text-[white]' : 'text-gray-600'
                     }`}
                   >
                     {link.label}
@@ -84,30 +84,6 @@ export default function Layout() {
       <main className="flex-grow">
         <Outlet />
       </main>
-
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-600">
-              © {year} InnovateLab. All rights reserved.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-600 hover:text-[#1A959C]" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-[#1A959C]" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-[#1A959C]" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-[#1A959C]" aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

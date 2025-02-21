@@ -1,149 +1,173 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
+import emailjs from '@emailjs/browser';
+import { MapPin, Mail, Phone, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+function Contact() {
+  const formRef = useRef();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitStatus(null), 3000);
-  };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    emailjs.sendForm(
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
+      formRef.current,
+      'YOUR_PUBLIC_KEY'
+    )
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        formRef.current.reset();
+      }, (error) => {
+        console.log('Error sending email:', error.text);
+      });
   };
 
   return (
-    <section className="relative py-20" id="contact">
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80"
-          alt="Contact background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
-      </div>
+    <>
+      <section className="py-16 bg-gray-50" id="contact">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Title with border line */}
+          <div className="flex items-center mb-12">
+            <div className="h-[1px] bg-[#1A959C] flex-grow"></div>
+            <span className="px-4 text-[#1A959C] font-[playfair display] font-medium tracking-wide">CONTACT US</span>
+            <div className="h-[1px] bg-[#1A959C] flex-grow"></div>
+          </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-lg shadow-xl p-8"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-              Get in Touch
-            </h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Contact Form */}
+            <motion.div
+              ref={ref}
+              initial={{ opacity: 0, x: -50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2"
+            >
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-1">
+                    <input
+                      type="text"
+                      name="user_name"
+                      placeholder="Your Name"
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-[#00A4AC] focus:ring-2 focus:ring-[#00A4AC]/20 font-[playfair display]"
+                      required
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <input
+                      type="email"
+                      name="user_email"
+                      placeholder="Your Email"
+                      className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-[#00A4AC] focus:ring-2 focus:ring-[#00A4AC]/20 font-[playfair display]"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    rows="6"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-[#00A4AC] focus:ring-2 focus:ring-[#00A4AC]/20 font-[playfair display]"
+                    required
+                  ></textarea>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full py-3 px-6 bg-[#1A959C] text-white rounded-lg font-[playfair display] hover:bg-[#008B92] transition-colors duration-300"
                 >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A959C] focus:border-transparent transition-colors"
-                  placeholder="Your name"
-                />
+                  Send Message
+                </motion.button>
+              </form>
+            </motion.div>
+
+            {/* Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:w-1/2 space-y-8"
+            >
+              <div className="flex items-start space-x-4">
+                <MapPin className="w-6 h-6 text-[#1A959C] mt-1" />
+                <div>
+                  <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Location</h3>
+                  <p className="text-gray-600 font-[playfair display]">Hrpn Jya Street, Pekanbaru</p>
+                </div>
               </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A959C] focus:border-transparent transition-colors"
-                  placeholder="your@email.com"
-                />
+              <div className="flex items-start space-x-4">
+                <Mail className="w-6 h-6 text-[#1A959C] mt-1" />
+                <div>
+                  <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Email</h3>
+                  <p className="text-gray-600 font-[playfair display]">Rewaste@mail.com</p>
+                </div>
               </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A959C] focus:border-transparent transition-colors"
-                  placeholder="Your message"
-                />
+              <div className="flex items-start space-x-4">
+                <Phone className="w-6 h-6 text-[#1A959C] mt-1" />
+                <div>
+                  <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Phone</h3>
+                  <p className="text-gray-600 font-[playfair display]">+622 322 223</p>
+                </div>
               </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#1A959C] text-white py-3 rounded-lg font-medium hover:bg-[#158389] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-              >
-                {isSubmitting ? (
-                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <Send size={20} />
-                  </>
-                )}
-              </button>
-
-              {submitStatus === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-green-600 text-center"
-                >
-                  Message sent successfully!
-                </motion.p>
-              )}
-            </form>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#1A959C] text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <p className="font-[playfair display]">&copy; 2024 Rewaste, All rights reserved. Present by CreedCreatives</p>
+            </div>
+            <div className="flex space-x-6">
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
+                className="hover:text-gray-200 transition-colors duration-300"
+              >
+                <Instagram className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
+                className="hover:text-gray-200 transition-colors duration-300"
+              >
+                <Facebook className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
+                className="hover:text-gray-200 transition-colors duration-300"
+              >
+                <Linkedin className="w-6 h-6" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                href="#"
+                className="hover:text-gray-200 transition-colors duration-300"
+              >
+                <Twitter className="w-6 h-6" />
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
+
+export default Contact;

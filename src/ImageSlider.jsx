@@ -43,7 +43,7 @@ export default function ImageSlider() {
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }} // Fixed template string syntax
           >
             <div className="absolute inset-0 bg-black/50" />
           </div>
@@ -65,19 +65,11 @@ export default function ImageSlider() {
               >
                 {slides[currentIndex].subtitle}
               </motion.p>
-              <motion.button
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="bg-[#1A959C] text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-[#158389] transition-colors"
-              >
-                Get Started
-              </motion.button>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
-      
+
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (
           <button
