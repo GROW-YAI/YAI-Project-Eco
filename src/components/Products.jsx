@@ -7,21 +7,21 @@ const products = [
     id: 1,
     title: "AI Analytics Suite",
     price: 299,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png',
     description: "Advanced analytics platform powered by artificial intelligence to transform your business data into actionable insights."
   },
   {
     id: 2,
     title: "Smart IoT Platform",
     price: 199,
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg',
     description: "Comprehensive IoT solution for connecting and managing smart devices across your organization."
   },
   {
     id: 3,
     title: "Secure Cloud Storage",
     price: 149,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
     description: "Enterprise-grade cloud storage with advanced security features and seamless integration capabilities."
   },
   {

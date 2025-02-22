@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const navLinks = [
@@ -13,27 +13,52 @@ const navLinks = [
 
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const year = new Date().getFullYear();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="fixed w-full z-50 mt-4">
-        <nav className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="backdrop-blur-md bg-[#1A959C] rounded-lg shadow-lg mx-4 p-4">
-            <div className="flex items-center justify-between">
-              <Link to="/" className="text-2xl font-bold text-[white]">
-                IKE-DIAN
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#1A959C]/95 ${
+          isScrolled ? 'shadow-md' : ''
+        }`}
+      >
+        <nav className="w-full">
+          <div className={`transition-all duration-300 ${
+            isScrolled ? 'py-2' : 'py-4'
+          } px-4 sm:px-6 lg:px-8`}>
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+              <Link 
+                to="/" 
+                className="text-xl md:text-2xl font-bold text-white tracking-tight hover:opacity-90 transition-opacity"
+              >
+                IKE-DIAN FASHION
               </Link>
               
               {/* Desktop Navigation */}
-              <div className="hidden md:flex space-x-8">
+              <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`text-sm font-medium transition-colors hover:text-[white] ${
-                      location.pathname === link.path ? 'text-[white]' : 'text-gray-600'
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-[#15777c] hover:text-white ${
+                      location.pathname === link.path 
+                        ? 'text-white bg-[#15777c]' 
+                        : 'text-gray-100'
                     }`}
                   >
                     {link.label}
@@ -43,7 +68,7 @@ export default function Layout() {
 
               {/* Mobile Menu Button */}
               <button
-                className="md:hidden p-2 rounded-md text-gray-600 hover:text-[#1A959C]"
+                className="md:hidden p-2 rounded-md text-white hover:bg-[#15777c] transition-colors"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               >
@@ -60,17 +85,19 @@ export default function Layout() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden absolute w-full px-4 pt-2"
+              transition={{ duration: 0.2 }}
+              className="md:hidden w-full border-t border-[#15777c]/20"
             >
-              <div className="backdrop-blur-md bg-white/70 rounded-lg shadow-lg p-4 mt-2">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`block py-2 text-sm font-medium transition-colors hover:text-[#1A959C] ${
-                      location.pathname === link.path ? 'text-[#1A959C]' : 'text-gray-600'
+                    className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors hover:bg-[#15777c] ${
+                      location.pathname === link.path 
+                        ? 'text-white bg-[#15777c]' 
+                        : 'text-gray-100'
                     }`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
                   </Link>
@@ -81,7 +108,7 @@ export default function Layout() {
         </AnimatePresence>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         <Outlet />
       </main>
     </div>

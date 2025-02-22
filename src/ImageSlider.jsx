@@ -3,19 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80',
+    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg',
     title: 'Innovation Starts Here',
     subtitle: 'Discover the future of technology with our cutting-edge solutions',
   },
   {
-    url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80',
+    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg',
     title: 'Transform Your Business',
     subtitle: 'Leverage our expertise to drive growth and innovation',
   },
   {
-    url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80',
+    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg',
     title: 'Smart Solutions',
     subtitle: 'Empowering businesses with intelligent technology',
+  },
+  {
+    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250814/i_want_single_images_of_tote_bags_made_from_worn_out_clothes_2_gme4zf.jpg',
+    title: 'Sustainable Fashion',
+    subtitle: 'Creating eco-friendly solutions for a better tomorrow',
   },
 ];
 
@@ -31,24 +36,28 @@ export default function ImageSlider() {
   }, []);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      <AnimatePresence initial={false}>
+    <section className="w-full h-screen">
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute inset-0"
+          className="relative w-full h-full"
         >
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentIndex].url})` }} // Fixed template string syntax
+            style={{
+              backgroundImage: `url(${slides[currentIndex].url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           >
             <div className="absolute inset-0 bg-black/50" />
           </div>
-          <div className="relative h-full flex items-center justify-center text-center px-4">
-            <div>
+          <div className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
               <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -61,7 +70,7 @@ export default function ImageSlider() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-xl md:text-2xl text-white mb-8"
+                className="text-xl md:text-2xl text-white"
               >
                 {slides[currentIndex].subtitle}
               </motion.p>
@@ -70,18 +79,18 @@ export default function ImageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex ? 'bg-white' : 'bg-white/50'
+            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+              index === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/75'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
-};
+}

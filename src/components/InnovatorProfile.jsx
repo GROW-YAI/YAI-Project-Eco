@@ -46,7 +46,7 @@ function InnovatorProfile() {
                   clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)"
                 }}>
                   <img
-                    src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=600&q=80"
+                    src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249929/i_want_an_image_of_a_pile_of_old_worn_out_clothes_1_u17vjr.jpg"
                     alt="Plastic Waste"
                     className="w-full h-48 object-cover transform transition-transform group-hover:scale-110 duration-500"
                   />
@@ -65,7 +65,7 @@ function InnovatorProfile() {
                   clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
                 }}>
                   <img
-                    src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+                    src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg"
                     alt="Sustainable Product"
                     className="w-full h-48 object-cover transform transition-transform group-hover:scale-110 duration-500"
                   />
