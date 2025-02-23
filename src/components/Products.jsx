@@ -5,31 +5,31 @@ import { X } from 'lucide-react';
 const products = [
   {
     id: 1,
-    title: "AI Analytics Suite",
+    title: "ReRub",
     price: 299,
     image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png',
-    description: "Advanced analytics platform powered by artificial intelligence to transform your business data into actionable insights."
+    description: "A durable, water-resistant backpack made from upcycled waste rubbers. Stylish, eco-friendly, and built for everyday use. Carry with purpose, support sustainability."
   },
   {
     id: 2,
-    title: "Smart IoT Platform",
+    title: "EcoWeave",
     price: 199,
     image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg',
-    description: "Comprehensive IoT solution for connecting and managing smart devices across your organization."
+    description: "Breathable, comfortable, and eco-friendly—EcoWeave Sheets are crafted from upcycled second-hand garments. Giving fabrics a second life, they offer sustainability without compromising on quality and comfort."
   },
   {
     id: 3,
-    title: "Secure Cloud Storage",
+    title: "ThreadTrek",
     price: 149,
     image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
-    description: "Enterprise-grade cloud storage with advanced security features and seamless integration capabilities."
+    description: "Lightweight, durable, and sustainably made—ThreadTrek Pack is crafted from upcycled second-hand garments. Designed for everyday use, it combines style, function, and a commitment to reducing textile waste."
   },
   {
     id: 4,
-    title: "Digital Workspace",
+    title: "FlexRub",
     price: 249,
     image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740060092/Untitled_design_3_bf5pmi.png',
-    description: "Modern collaboration platform designed to enhance team productivity and communication."
+    description: "Made from repurposed waste rubber, the FlexRub Pack is built for toughness and longevity. Its rugged, water-resistant design makes it ideal for daily use, while its eco-friendly materials help reduce waste and promote sustainability."
   }
 ];
 
@@ -132,7 +132,7 @@ export default function Products() {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-['Playfair_Display'] font-bold text-[#00A4AC]">
-                    ${selectedProduct.price}
+                    GH₵{selectedProduct.price}
                   </span>
                   <button 
                     onClick={handlePaystackPayment}

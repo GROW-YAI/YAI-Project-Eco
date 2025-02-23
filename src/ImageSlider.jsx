@@ -5,17 +5,17 @@ const slides = [
   {
     url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg',
     title: 'Innovation Starts Here',
-    subtitle: 'Discover the future of technology with our cutting-edge solutions',
+    subtitle: 'Reducing waste, creating impact—one repurposed product at a time',
   },
   {
     url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg',
-    title: 'Transform Your Business',
-    subtitle: 'Leverage our expertise to drive growth and innovation',
+    title: 'Waste into Worth',
+    subtitle: 'Turning local waste into high-quality, sustainable products for everyday use',
   },
   {
     url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg',
-    title: 'Smart Solutions',
-    subtitle: 'Empowering businesses with intelligent technology',
+    title: 'Redefining Waste',
+    subtitle: 'Repurposing old worn-out garments into essentials that make a difference',
   },
   {
     url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250814/i_want_single_images_of_tote_bags_made_from_worn_out_clothes_2_gme4zf.jpg',
