@@ -100,21 +100,21 @@ function Contact() {
                 <MapPin className="w-6 h-6 text-[#1A959C] mt-1" />
                 <div>
                   <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Location</h3>
-                  <p className="text-gray-600 font-[playfair display]">Hrpn Jya Street, Pekanbaru</p>
+                  <p className="text-gray-600 font-[playfair display]">Barima Osei Hwedie II, Ejura, Ashanti Region,Ghana.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <Mail className="w-6 h-6 text-[#1A959C] mt-1" />
                 <div>
                   <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600 font-[playfair display]">Rewaste@mail.com</p>
+                  <p className="text-gray-600 font-[playfair display]">ikedianfash@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <Phone className="w-6 h-6 text-[#1A959C] mt-1" />
                 <div>
                   <h3 className="text-xl font-[playfair display] font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600 font-[playfair display]">+622 322 223</p>
+                  <p className="text-gray-600 font-[playfair display]">+233 24 453 0571</p>
                 </div>
               </div>
             </motion.div>

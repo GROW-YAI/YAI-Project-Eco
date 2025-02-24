@@ -8,6 +8,7 @@ const navLinks = [
   { path: '/about', label: 'About' },
   { path: '/innovator-profile', label: 'Innovator Profile' },
   { path: '/products', label: 'Products' },
+  { path: '/testimonials', label: 'Testimonials' },
   { path: '/contact', label: 'Contact' },
 ];
 

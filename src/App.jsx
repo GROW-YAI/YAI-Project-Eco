@@ -6,6 +6,7 @@ import About from './components/About';
 import InnovatorProfile from './components/InnovatorProfile';
 import Products from './components/Products';
 import Contact from './components/Contact';
+import TestimonialsSection from './components/TestimonialsSection';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="innovator-profile" element={<InnovatorProfile />} />
         <Route path="products" element={<Products />} />
+        <Route path="testimonials" element={<TestimonialsSection />} />
         <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
