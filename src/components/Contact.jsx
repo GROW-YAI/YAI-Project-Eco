@@ -127,7 +127,7 @@ function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="font-[playfair display]">&copy; 2024 Rewaste, All rights reserved. Present by CreedCreatives</p>
+              <p className="font-[playfair display]">&copy; {new Date().getFullYear()} Ike-Dian Fashion, All rights reserved.</p>
             </div>
             <div className="flex space-x-6">
               <motion.a
