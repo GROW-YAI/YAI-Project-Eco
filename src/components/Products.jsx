@@ -113,8 +113,9 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handlePaystackPayment = () => {
-    window.open('https://paystack.com/pay/your-payment-link', '_blank');
-  };
+    window.open('https://paystack.shop/ike-dian-fashion', '_blank');
+};
+
 
   return (
     <section className="py-20 bg-gray-50" id="products">
