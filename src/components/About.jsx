@@ -119,7 +119,7 @@ export default function About() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <Check className="text-[#00A4AC] w-6 h-6 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-[#00A4AC] font-['Playfair_Display']">
+                  <p className="text-lg text-[#00A4AC]  font-['Playfair_Display']">
                     Converting plastic waste into durable, stylish backpacks and tote bags
                   </p>
                 </div>
@@ -145,7 +145,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="pt-4"
               >
-                <p className="text-black/70 font-['Playfair_Display'] text-lg italic">
+                <p className="text-black/70 font-['Playfair_Display']  font-bold text-lg italic">
                   "Every piece tells a story of transformation and hope for a sustainable future."
                 </p>
               </motion.div>

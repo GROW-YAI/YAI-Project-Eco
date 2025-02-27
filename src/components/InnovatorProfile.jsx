@@ -14,7 +14,7 @@ function InnovatorProfile() {
         {/* Title with border line */}
         <div className="flex items-center mb-12">
           <div className="h-[1px] bg-[#00A4AC] flex-grow"></div>
-          <span className="px-4 text-[#00A4AC] font-[playfair display] font-medium tracking-wide">
+          <span className="px-4 text-[#00A4AC] font-['Playfair_Display']  font-medium tracking-wide">
             INNOVATOR PROFILE
           </span>
           <div className="h-[1px] bg-[#00A4AC] flex-grow"></div>
@@ -28,10 +28,10 @@ function InnovatorProfile() {
             transition={{ duration: 0.6 }}
             className="lg:w-1/2"
           >
-            <h2 className="text-3xl font-[playfair display] font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl font-['Playfair_Display']  font-bold text-gray-900 mb-6">
               The Architect of Change
             </h2>
-            <p className="text-lg font-[playfair display] text-gray-600 leading-relaxed mb-10">
+            <p className="text-lg  text-gray-600 leading-relaxed mb-10">
               Isaac Osei is a forward-thinking entrepreneur from Ejura, Ashanti
               Region, committed to transforming waste into valuable products.
               Driven by the growing challenges of improper waste disposal,
@@ -72,7 +72,7 @@ function InnovatorProfile() {
                     className="w-full h-48 object-cover transform transition-transform group-hover:scale-110 duration-500"
                   />
                 </div>
-                <p className="text-center mt-4 font-[playfair display] text-gray-600">
+                <p className="text-center mt-4 font-['Playfair_Display']  text-gray-600">
                   The Problem
                 </p>
               </motion.div>
@@ -97,7 +97,7 @@ function InnovatorProfile() {
                     className="w-full h-48 object-cover transform transition-transform group-hover:scale-110 duration-500"
                   />
                 </div>
-                <p className="text-center mt-4 font-[playfair display] text-gray-600">
+                <p className="text-center mt-4 font-['Playfair_Display']  text-gray-600">
                   The Solution
                 </p>
               </motion.div>
@@ -135,10 +135,10 @@ function InnovatorProfile() {
 
               {/* Name and Position */}
               <div className="text-center mt-6">
-                <h3 className="text-2xl font-[playfair display] font-bold text-gray-900">
+                <h3 className="text-2xl font-['Playfair_Display'] font-bold text-gray-900">
                   Isaac Osei
                 </h3>
-                <p className="text-[#1A959C] font-[playfair display] font-medium mt-1">
+                <p className="text-[#1A959C] font-['Playfair_Display']  font-medium mt-1">
                   Chief Innovation Officer
                 </p>
               </div>

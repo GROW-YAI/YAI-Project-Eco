@@ -12,18 +12,68 @@ const navLinks = [
   { path: '/contact', label: 'Contact' },
 ];
 
+// Map section IDs to paths for sections that might have different IDs
+const sectionIdMap = {
+  'testimonials': 'testimonials',
+  'products': 'products',
+  'contact': 'contact',
+  'about': 'about',
+  'innovator-profile': 'innovator-profile',
+  'home': 'hero'
+};
+
 export default function Layout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('/');
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      
+      // Determine which section is currently in view
+      const sections = navLinks.map(link => link.path.replace('/', '')).filter(id => id);
+      sections.unshift('home'); // Add home section
+      
+      // Check all possible section IDs
+      const checkSectionVisibility = () => {
+        for (const section of sections.reverse()) { // Check from bottom to top
+          // Try multiple possible ID formats for each section
+          const possibleIds = [
+            sectionIdMap[section] || section,
+            section.toLowerCase(),
+            section.replace(/-/g, '_'),
+            section.replace(/-/g, ''),
+            `section-${section}`,
+            `${section}-section`
+          ];
+          
+          for (const id of possibleIds) {
+            const element = document.getElementById(id);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              // If the section is in the viewport (with some buffer for better UX)
+              if (rect.top <= 150 && rect.bottom >= 150) {
+                setActiveSection(section === 'home' ? '/' : `/${section}`);
+                return; // Exit both loops once found
+              }
+            }
+          }
+        }
+      };
+      
+      checkSectionVisibility();
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // For debugging - log all section IDs found on the page
+  useEffect(() => {
+    const allElements = document.querySelectorAll('[id]');
+    console.log('All elements with IDs:', Array.from(allElements).map(el => el.id));
   }, []);
 
   useEffect(() => {
@@ -44,7 +94,7 @@ export default function Layout() {
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               <Link 
                 to="/" 
-                className="text-lg md:text-2xl font-bold text-white tracking-tight hover:opacity-90 transition-opacity"
+                className="text-lg md:text-2xl font-bold text-white tracking-tight font-['Playfair_Display']hover:opacity-90 transition-opacity"
               >
                 IKE-DIAN FASHION
               </Link>
@@ -55,8 +105,8 @@ export default function Layout() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-[#15777c] hover:text-white ${
-                      location.pathname === link.path 
+                    className={`px-2 lg:px-3 py-2 rounded-md text-sm font-['Playfair_Display'] font-medium transition-colors hover:bg-[#15777c] hover:text-white ${
+                      (location.pathname === link.path || activeSection === link.path)
                         ? 'text-white bg-[#15777c]' 
                         : 'text-gray-100'
                     }`}
@@ -93,7 +143,7 @@ export default function Layout() {
                       key={link.path}
                       to={link.path}
                       className={`block px-4 py-3 text-sm font-medium rounded-md transition-colors hover:bg-[#15777c] ${
-                        location.pathname === link.path 
+                        (location.pathname === link.path || activeSection === link.path)
                           ? 'text-white bg-[#15777c]' 
                           : 'text-gray-100'
                       }`}

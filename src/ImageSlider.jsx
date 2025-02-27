@@ -62,7 +62,7 @@ export default function ImageSlider() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-4xl md:text-6xl font-bold text-white mb-4"
+                className="text-4xl md:text-6xl font-bold font-['Playfair_Display'] text-white mb-4"
               >
                 {slides[currentIndex].title}
               </motion.h1>
@@ -70,7 +70,7 @@ export default function ImageSlider() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="text-xl md:text-2xl text-white"
+                className="text-xl md:text-2xl text-white font-['Playfair_Display']"
               >
                 {slides[currentIndex].subtitle}
               </motion.p>

@@ -148,7 +148,7 @@ export default function Products() {
                   <h3 className="text-xl font-['Playfair_Display'] font-semibold text-gray-900">
                     {product.title}
                   </h3>
-                  <span className="text-lg font-semibold text-[#00A4AC]">
+                  <span className="text-lg font-semibold font-['Playfair_Display'] text-[#00A4AC]">
                     GH₵{product.price}
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default function Products() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedProduct(product)}
-                  className="w-full bg-gray-100 text-gray-900 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                  className="w-full bg-gray-100 text-gray-900 px-4 py-2  font-['Playfair_Display'] rounded-lg font-medium hover:bg-gray-200 transition-colors"
                 >
                   Learn More
                 </motion.button>
@@ -174,7 +174,16 @@ export default function Products() {
               className="fixed inset-0 flex items-center justify-center p-4 z-50"
               onClick={() => setSelectedProduct(null)}
             >
-              <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm" />
+              {/* Background with product image and blur effect */}
+              <div 
+                className="fixed inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${selectedProduct.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  filter: 'blur(8px) brightness(0.7)'
+                }}
+              />
 
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -206,7 +215,7 @@ export default function Products() {
                     <h3 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-4">
                       {selectedProduct.title}
                     </h3>
-                    <p className="text-gray-600 text-lg mb-6">
+                    <p className="text-gray-600 text-lg mb-6 ">
                       {selectedProduct.description}
                     </p>
 
@@ -249,7 +258,7 @@ export default function Products() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handlePaystackPayment}
-                        className="bg-[#00A4AC] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#00A4AC]/90 transition-colors"
+                        className="bg-[#00A4AC] text-white  font-['Playfair_Display'] px-8 py-3 rounded-lg font-medium hover:bg-[#00A4AC]/90 transition-colors"
                       >
                         Shop Now
                       </motion.button>
