@@ -100,7 +100,7 @@ const TestimonialsSection = () => {
   });
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section  id="testimonials" className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Updated header with matching border style */}
         <div className="flex items-center mb-12">

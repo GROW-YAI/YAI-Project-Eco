@@ -9,7 +9,7 @@ function InnovatorProfile() {
   });
 
   return (
-    <section className="py-16 bg-gray-50" id="innovator">
+    <section className="py-16 bg-gray-50" id="innovator-profile">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title with border line */}
         <div className="flex items-center mb-12">
