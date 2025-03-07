@@ -2,14 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import emailjs from "@emailjs/browser";
-import {
-  MapPin,
-  Mail,
-  Phone,
-  Instagram,
-  Facebook,
-  Linkedin,
-} from "lucide-react";
+import { MapPin, Mail, Phone, Instagram, Facebook } from "lucide-react";
 
 function Contact() {
   const formRef = useRef();
@@ -188,14 +181,6 @@ function Contact() {
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                href="#"
-                className="hover:text-gray-200 transition-colors duration-300"
-              >
-                <Linkedin className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 href="https://www.tiktok.com/@ike.dian1?_t=ZM-8uCZqDyWfmX&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -203,11 +188,13 @@ function Contact() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
                   fill="currentColor"
                   className="w-6 h-6"
                 >
-                  <path d="M448 209.3c-16.5 3.7-33.6 5.6-51.2 5.6-42.2 0-82.1-13.6-114.6-36.7v127.5c0 93.8-76.2 169.9-170 169.9S0 399.5 0 305.7c0-93.8 76.2-170 170-170 9.5 0 18.9 .8 28 2.5v92.5c-9.1-3-18.5-4.5-28-4.5-42.2 0-76 34.3-76 76 0 41.9 33.8 76 76 76 42.2 0 76-34.3 76-76V0h96c3.9 48.4 31.6 90.1 72 111.1v98.2z" />
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                 </svg>
               </motion.a>
             </div>

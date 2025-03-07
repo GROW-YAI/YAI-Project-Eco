@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   {
-    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg',
-    title: 'Innovation Starts Here',
-    subtitle: 'Reducing waste, creating impact—one repurposed product at a time',
+    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg",
+    title: "Innovation Starts Here",
+    subtitle:
+      "Reducing waste, creating impact—one repurposed product at a time",
   },
   {
-    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg',
-    title: 'Waste into Worth',
-    subtitle: 'Turning local waste into high-quality, sustainable products for everyday use',
+    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
+    title: "Waste into Worth",
+    subtitle:
+      "Turning local waste into high-quality, sustainable products for everyday use",
   },
   {
-    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg',
-    title: 'Redefining Waste',
-    subtitle: 'Repurposing old worn-out garments into essentials that make a difference',
+    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg",
+    title: "Redefining Waste",
+    subtitle:
+      "Repurposing old worn-out garments into essentials that make a difference",
   },
   {
-    url: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250814/i_want_single_images_of_tote_bags_made_from_worn_out_clothes_2_gme4zf.jpg',
-    title: 'Sustainable Fashion',
-    subtitle: 'Creating eco-friendly solutions for a better tomorrow',
+    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250814/i_want_single_images_of_tote_bags_made_from_worn_out_clothes_2_gme4zf.jpg",
+    title: "Sustainable Fashion",
+    subtitle: "Creating eco-friendly solutions for a better tomorrow",
   },
 ];
 
@@ -50,8 +53,8 @@ export default function ImageSlider() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url(${slides[currentIndex].url})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           >
             <div className="absolute inset-0 bg-black/50" />
@@ -85,7 +88,9 @@ export default function ImageSlider() {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-              index === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/75'
+              index === currentIndex
+                ? "bg-white"
+                : "bg-white/50 hover:bg-white/75"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

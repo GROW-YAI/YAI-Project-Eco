@@ -4,17 +4,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* body {
-  @apply antialiased;
-} */
 
-/* Glass morphism utility class
-.glass {
-  @apply backdrop-blur-md bg-white/70;
-} */
-
-/* Smooth transitions */
+/* Smooth transitions
 .transition-all {
   @apply transition-all duration-300 ease-in-out;
-}
+} */
 

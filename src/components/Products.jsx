@@ -1,121 +1,153 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Leaf, Award, Recycle, PenTool as Tool, Shield, Star, Heart } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  Leaf,
+  Award,
+  Recycle,
+  PenTool as Tool,
+  Shield,
+  Star,
+  Heart,
+} from "lucide-react";
 
 const products = [
   {
     id: 1,
     title: "ReRub",
-    price: 299,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png',
-    description: "A durable, water-resistant backpack made from upcycled waste rubbers. Stylish, eco-friendly, and built for everyday use. Carry with purpose, support sustainability.",
+    price: 150,
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png",
+    description:
+      "A durable, water-resistant backpack made from upcycled waste rubbers. Stylish, eco-friendly, and built for everyday use. Carry with purpose, support sustainability.",
     features: {
       materials: "Upcycled Rubber",
       quality: "Premium Grade",
       eco: "100% Sustainable",
-      crafting: "Handmade with Care"
-    }
+      crafting: "Handmade with Care",
+    },
+    paystackLink: "https://paystack.com/buy/rerub-hvhizn",
   },
   {
     id: 2,
     title: "EcoWeave",
     price: 199,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg',
-    description: "Breathable, comfortable, and eco-friendly—EcoWeave Sheets are crafted from upcycled second-hand garments. Giving fabrics a second life, they offer sustainability without compromising on quality and comfort.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg",
+    description:
+      "Breathable, comfortable, and eco-friendly—EcoWeave Sheets are crafted from upcycled second-hand garments. Giving fabrics a second life, they offer sustainability without compromising on quality and comfort.",
     features: {
       materials: "Recycled Fabrics",
       quality: "Superior Comfort",
       eco: "Zero Waste",
-      crafting: "Artisan Made"
-    }
+      crafting: "Artisan Made",
+    },
+    paystackLink: "https://paystack.com/buy/ecoweave-qdlzow",
   },
   {
     id: 3,
     title: "ThreadTrek",
     price: 149,
-    image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
-    description: "Lightweight, durable, and sustainably made—ThreadTrek Pack is crafted from upcycled second-hand garments. Designed for everyday use, it combines style, function, and a commitment to reducing textile waste.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
+    description:
+      "Lightweight, durable, and sustainably made—ThreadTrek Pack is crafted from upcycled second-hand garments. Designed for everyday use, it combines style, function, and a commitment to reducing textile waste.",
     features: {
       materials: "Upcycled Textiles",
       quality: "Built to Last",
       eco: "Eco-Conscious",
-      crafting: "Hand-Stitched"
-    }
+      crafting: "Hand-Stitched",
+    },
+    paystackLink: "https://paystack.com/buy/threadtrek-mraeuf",
   },
   {
     id: 4,
     title: "FlexRub",
     price: 249,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740060092/Untitled_design_3_bf5pmi.png',
-    description: "Made from repurposed waste rubber, the FlexRub Pack is built for toughness and longevity. Its rugged, water-resistant design makes it ideal for daily use, while its eco-friendly materials help reduce waste and promote sustainability.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740060092/Untitled_design_3_bf5pmi.png",
+    description:
+      "Made from repurposed waste rubber, the FlexRub Pack is built for toughness and longevity. Its rugged, water-resistant design makes it ideal for daily use, while its eco-friendly materials help reduce waste and promote sustainability.",
     features: {
       materials: "Repurposed Rubber",
       quality: "Military Grade",
       eco: "Waste Reducing",
-      crafting: "Expert Crafted"
-    }
+      crafting: "Expert Crafted",
+    },
+    paystackLink: "https://paystack.com/buy/flexrub-qlpoxb",
   },
   {
     id: 5,
     title: "EcoLux Tote",
     price: 179,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png',
-    description: "Elegantly designed tote bag made from premium recycled materials. Perfect for the environmentally conscious fashion enthusiast.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
+    description:
+      "Elegantly designed tote bag made from premium recycled materials. Perfect for the environmentally conscious fashion enthusiast.",
     features: {
       materials: "Recycled Premium",
       quality: "Luxury Grade",
       eco: "Eco-Luxurious",
-      crafting: "Artisan Crafted"
-    }
+      crafting: "Artisan Crafted",
+    },
+    paystackLink: "https://paystack.com/buy/ecolux-tote-gvuebf",
   },
   {
     id: 6,
     title: "GreenStride",
     price: 289,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg',
-    description: "Innovative backpack crafted from recycled plastics and sustainable materials. Style meets environmental responsibility.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
+    description:
+      "Innovative backpack crafted from recycled plastics and sustainable materials. Style meets environmental responsibility.",
     features: {
       materials: "Recycled Plastic",
       quality: "Premium Comfort",
       eco: "Ocean Friendly",
-      crafting: "Hand Finished"
-    }
+      crafting: "Hand Finished",
+    },
+    paystackLink: "https://paystack.com/buy/greenstride-nijmpk",
   },
   {
     id: 7,
     title: "EcoPatch",
     price: 199,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417043/sheets_elfxvc.webp',
-    description: "Elevate your bedroom with the EcoPatch Reclaimed Bedsheet, a sustainable and stylish choice made from upcycled second-hand garments. Each bedsheet features a unique patchwork design combining denim, cotton, and wool textures, ensuring warmth, comfort, and durability. Expertly stitched for a polished finish, this eco-friendly bedding is perfect for those who appreciate craftsmanship and conscious living.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417043/sheets_elfxvc.webp",
+    description:
+      "Elevate your bedroom with the EcoPatch Reclaimed Bedsheet, a sustainable and stylish choice made from upcycled second-hand garments. Each bedsheet features a unique patchwork design combining denim, cotton, and wool textures, ensuring warmth, comfort, and durability. Expertly stitched for a polished finish, this eco-friendly bedding is perfect for those who appreciate craftsmanship and conscious living.",
     features: {
       materials: " Upcycled Fabrics",
       quality: "Expertly Stitched",
       eco: "Sustainable Comfort",
-      crafting: "Handcrafted Excellence"
-    }
+      crafting: "Handcrafted Excellence",
+    },
+    paystackLink: "https://paystack.com/buy/ecopatch-byapnr",
   },
   {
     id: 8,
     title: "LuxeHeritage",
     price: 159,
-    image: 'https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417520/sheet2_vfx09c.webp',
-    description: "Experience the perfect blend of sustainability and luxury with the LuxeHeritage Denim Bedsheet. Crafted from upcycled denim and repurposed fabrics, this unique bedding set features a stunning patchwork design that merges rich indigo tones with vibrant African prints. Set in a plush, Ghanaian-inspired bedroom, it embodies eco-conscious living without compromising on style and comfort.",
+    image:
+      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417520/sheet2_vfx09c.webp",
+    description:
+      "Experience the perfect blend of sustainability and luxury with the LuxeHeritage Denim Bedsheet. Crafted from upcycled denim and repurposed fabrics, this unique bedding set features a stunning patchwork design that merges rich indigo tones with vibrant African prints. Set in a plush, Ghanaian-inspired bedroom, it embodies eco-conscious living without compromising on style and comfort.",
     features: {
       materials: "Upcycled Denim & African Prints",
       quality: "Premium Stitching & Durable Fabrics",
       eco: "Sustainable & Reclaimed Textiles",
-      crafting: "Handcrafted with Cultural Elegance"
-    }
-  }
+      crafting: "Handcrafted with Cultural Elegance",
+    },
+    paystackLink: "https://paystack.com/buy/luxeheritage-trjcnk",
+  },
 ];
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const handlePaystackPayment = () => {
-    window.open('https://paystack.shop/ike-dian-fashion', '_blank');
-};
-
+  const handlePaystackPayment = (productLink) => {
+    window.open(productLink, "_blank");
+  };
 
   return (
     <section className="py-20 bg-gray-50" id="products">
@@ -123,7 +155,9 @@ export default function Products() {
         {/* Top border line with PRODUCTS text */}
         <div className="flex items-center mb-12">
           <div className="h-[1px] bg-[#00A4AC] flex-grow"></div>
-          <span className="px-4 text-[#00A4AC] font-['Playfair_Display'] font-medium tracking-wide">PRODUCTS</span>
+          <span className="px-4 text-[#00A4AC] font-['Playfair_Display'] font-medium tracking-wide">
+            PRODUCTS
+          </span>
           <div className="h-[1px] bg-[#00A4AC] flex-grow"></div>
         </div>
 
@@ -176,13 +210,13 @@ export default function Products() {
               onClick={() => setSelectedProduct(null)}
             >
               {/* Background with product image and blur effect */}
-              <div 
+              <div
                 className="fixed inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${selectedProduct.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  filter: 'blur(8px) brightness(0.7)'
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "blur(8px) brightness(0.7)",
                 }}
               />
 
@@ -224,30 +258,42 @@ export default function Products() {
                     <div className="grid grid-cols-2 gap-4 mb-8">
                       <div className="flex items-center space-x-2">
                         <Recycle className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">{selectedProduct.features.materials}</span>
+                        <span className="text-sm">
+                          {selectedProduct.features.materials}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Star className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">{selectedProduct.features.quality}</span>
+                        <span className="text-sm">
+                          {selectedProduct.features.quality}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Leaf className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">{selectedProduct.features.eco}</span>
+                        <span className="text-sm">
+                          {selectedProduct.features.eco}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Tool className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">{selectedProduct.features.crafting}</span>
+                        <span className="text-sm">
+                          {selectedProduct.features.crafting}
+                        </span>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <Shield className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm font-medium">Quality Guaranteed</span>
+                        <span className="text-sm font-medium">
+                          Quality Guaranteed
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Heart className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm font-medium">Made with Love</span>
+                        <span className="text-sm font-medium">
+                          Made with Love
+                        </span>
                       </div>
                     </div>
 
@@ -258,7 +304,9 @@ export default function Products() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={handlePaystackPayment}
+                        onClick={() =>
+                          handlePaystackPayment(selectedProduct.paystackLink)
+                        }
                         className="bg-[#00A4AC] text-white  font-['Playfair_Display'] px-8 py-3 rounded-lg font-medium hover:bg-[#00A4AC]/90 transition-colors"
                       >
                         Shop Now
