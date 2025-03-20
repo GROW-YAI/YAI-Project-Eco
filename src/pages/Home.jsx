@@ -4,6 +4,7 @@ import About from '../components/About';
 import InnovatorProfile from '../components/InnovatorProfile';
 import Products from '../components/Products';
 import TestimonialsSection from '../components/TestimonialsSection';
+import Gallery from '../components/Gallery';
 import Contact from '../components/Contact';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <InnovatorProfile />
       <Products />
       <TestimonialsSection />
+      <Gallery />
       <Contact />
     </div>
   );
