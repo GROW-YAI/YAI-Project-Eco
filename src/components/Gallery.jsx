@@ -56,6 +56,7 @@ function Gallery() {
     threshold: 0.2,
   });
 
+  const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-advance slideshow
@@ -79,13 +80,13 @@ function Gallery() {
           <div className="h-[1px] bg-[#00A4AC] flex-grow"></div>
         </div>
 
-        {/* Slideshow Banner */}
+        {/* Featured Image */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="relative w-full max-w-6xl mx-auto h-screen overflow-hidden rounded-lg shadow-xl"
+          className="relative w-full max-w-6xl mx-auto h-[70vh] overflow-hidden rounded-lg shadow-xl mb-8"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -99,7 +100,7 @@ function Gallery() {
               <img
                 src={galleryImages[currentIndex].src}
                 alt={galleryImages[currentIndex].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-gray-50"
               />
 
               {/* Overlay with title and description */}
@@ -128,7 +129,78 @@ function Gallery() {
             ))}
           </div>
         </motion.div>
+
+        {/* Thumbnail Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={image.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group cursor-pointer overflow-hidden rounded-lg shadow-md"
+              onClick={() => setSelectedImage(image)}
+            >
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-full object-contain bg-gray-50 transform transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <h3 className="text-white font-['Playfair_Display'] text-lg font-medium text-center px-4">
+                  {image.title}
+                </h3>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      {/* Modal for full image view */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl w-full bg-white rounded-lg overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 transition-colors"
+                onClick={() => setSelectedImage(null)}
+              >
+                <X size={24} />
+              </button>
+              <div className="p-6">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="w-full h-auto max-h-[70vh] object-contain mx-auto"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-2xl font-['Playfair_Display'] font-medium text-gray-900">
+                    {selectedImage.title}
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    {selectedImage.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
