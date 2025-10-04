@@ -32,7 +32,7 @@ export default function Layout() {
       left: 0,
       behavior: "instant", // Use "smooth" for a smooth scroll animation
     });
-  }, [location.pathname]); // This effect runs every time the pathname changes
+  }, [location.pathname]);  //this effect runs every time the pathname changes
 
 
   useEffect(() => {
