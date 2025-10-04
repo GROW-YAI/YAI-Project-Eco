@@ -23,6 +23,18 @@ export default function Layout() {
   const [activeSection, setActiveSection] = useState("/");
   const location = useLocation();
 
+  
+  //This useEffect handles scrolling to the top on navigation
+  useEffect(() => {
+    //Scroll to the top instantly when the pathname changes
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant", // Use "smooth" for a smooth scroll animation
+    });
+  }, [location.pathname]);  //this effect runs every time the pathname changes
+
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
