@@ -30,7 +30,7 @@ export default function Layout() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // Use "smooth" for a smooth scroll animation
+      behavior: "smooth", // Use "smooth" for a smooth scroll animation
     });
   }, [location.pathname]);  //this effect runs every time the pathname changes
 
