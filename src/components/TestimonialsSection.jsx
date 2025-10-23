@@ -6,7 +6,8 @@ const testimonials = [
   {
     id: 1,
     name: "Abena Nketsia",
-    image: "😊",
+    image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
+
     text: "The eco-friendly backpack is amazing! Knowing it's made from recycled materials makes me feel great about my purchase. It's durable, stylish, and I love that each product helps reduce plastic waste.",
     rating: 5,
     product: "Eco-Friendly Backpack",
@@ -43,6 +44,25 @@ const TestimonialCard = ({ testimonial, index }) => {
     threshold: 0.1,
   });
 
+   // Function to check if the image is a URL or emoji
+  const renderImage = (image) => {
+    if (image.startsWith('http')) {
+      return (
+        <img 
+          src={image} 
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover"
+        />
+      );
+    } else {
+      return (
+        <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-2xl">
+          {image}
+        </div>
+      );
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -54,7 +74,7 @@ const TestimonialCard = ({ testimonial, index }) => {
     >
       <div className="flex items-center mb-4">
         <div className="relative w-12 h-12 mr-4 flex items-center justify-center text-3xl">
-          {testimonial.image}
+          {renderImage(testimonial.image)}
         </div>
         <div>
           <h3 className="font-['Playfair_Display']  text-lg font-semibold text-gray-900">

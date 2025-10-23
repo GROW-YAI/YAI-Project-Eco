@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import slide1 from "./images/slide1.jpeg";
+import slide2 from "./images/slide2.jpeg";
+import slide3 from "./images/slide3.jpeg";
+// import slide4 from "../images/tote-bags-clothes.jpg";
+
 const slides = [
   {
-    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg",
+    url: slide2,
+    // url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249809/i_want_an_image_of_a_plastic_waste_dump_1_mrqb1b.jpg",
     title: "Innovation Starts Here",
     subtitle:
       "Reducing waste, creating impact—one repurposed product at a time",
   },
   {
-    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
+    url:"https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
+    // url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
     title: "Waste into Worth",
     subtitle:
       "Turning local waste into high-quality, sustainable products for everyday use",
   },
   {
-    url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg",
+    url: slide3,
+    // url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg",
     title: "Redefining Waste",
     subtitle:
       "Repurposing old worn-out garments into essentials that make a difference",
