@@ -11,13 +11,24 @@ import {
   Heart,
 } from "lucide-react";
 
+
+import rerubImage from "../images/rerub.jpeg";
+import ecoweaveImage from "../images/eco-weave.jpeg";
+import threadtrekImage from "../images/thread-trek.jpeg";  
+import flexrubImage from "../images/flex-rub.jpeg";
+import ecoluxToteImage from "../images/ecolux-tote.jpeg";
+import greenstrideImage from "../images/green-stride.jpeg";  
+import ecopatchImage from "../images/ecopatch.jpeg";
+import luxeheritageImage from "../images/luxe-heritage.jpeg";
+
 const products = [
   {
     id: 1,
     title: "ReRub",
     price: 150,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248507/ik9_hwzy5u.png",
+      rerubImage,
     description:
       "A durable, water-resistant backpack made from upcycled waste rubbers. Stylish, eco-friendly, and built for everyday use. Carry with purpose, support sustainability.",
     features: {
@@ -28,12 +39,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/rerub-hvhizn",
   },
+
   {
     id: 2,
     title: "EcoWeave",
     price: 199,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250726/i_want_single_images_of_bedsheets_made_from_worn_out_african_clothes_1_h6ogpo.jpg",
+      ecoweaveImage,
     description:
       "Breathable, comfortable, and eco-friendly—EcoWeave Sheets are crafted from upcycled second-hand garments. Giving fabrics a second life, they offer sustainability without compromising on quality and comfort.",
     features: {
@@ -44,12 +57,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/ecoweave-qdlzow",
   },
+
   {
     id: 3,
     title: "ThreadTrek",
     price: 149,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250795/i_want_single_images_of_backpacks_made_from_worn_out_african_clothes_akltpn.jpg",
+      threadtrekImage,
     description:
       "Lightweight, durable, and sustainably made—ThreadTrek Pack is crafted from upcycled second-hand garments. Designed for everyday use, it combines style, function, and a commitment to reducing textile waste.",
     features: {
@@ -60,12 +75,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/threadtrek-mraeuf",
   },
+
   {
     id: 4,
     title: "FlexRub",
     price: 249,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740060092/Untitled_design_3_bf5pmi.png",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740060092/Untitled_design_3_bf5pmi.png",
+      flexrubImage,
     description:
       "Made from repurposed waste rubber, the FlexRub Pack is built for toughness and longevity. Its rugged, water-resistant design makes it ideal for daily use, while its eco-friendly materials help reduce waste and promote sustainability.",
     features: {
@@ -76,12 +93,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/flexrub-qlpoxb",
   },
+
   {
     id: 5,
     title: "EcoLux Tote",
     price: 179,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
+      ecoluxToteImage,
     description:
       "Elegantly designed tote bag made from premium recycled materials. Perfect for the environmentally conscious fashion enthusiast.",
     features: {
@@ -92,12 +111,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/ecolux-tote-gvuebf",
   },
+
   {
     id: 6,
     title: "GreenStride",
     price: 289,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740250694/i_want_single_images_of_backpacks_made_from_plastic_waste_in_a_ghana_k1vqou.jpg",
+      greenstrideImage,
     description:
       "Innovative backpack crafted from recycled plastics and sustainable materials. Style meets environmental responsibility.",
     features: {
@@ -113,7 +134,8 @@ const products = [
     title: "EcoPatch",
     price: 199,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417043/sheets_elfxvc.webp",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417043/sheets_elfxvc.webp",
+      ecopatchImage,
     description:
       "Elevate your bedroom with the EcoPatch Reclaimed Bedsheet, a sustainable and stylish choice made from upcycled second-hand garments. Each bedsheet features a unique patchwork design combining denim, cotton, and wool textures, ensuring warmth, comfort, and durability. Expertly stitched for a polished finish, this eco-friendly bedding is perfect for those who appreciate craftsmanship and conscious living.",
     features: {
@@ -124,12 +146,14 @@ const products = [
     },
     paystackLink: "https://paystack.com/buy/ecopatch-byapnr",
   },
+
   {
     id: 8,
     title: "LuxeHeritage",
     price: 159,
     image:
-      "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417520/sheet2_vfx09c.webp",
+      // "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740417520/sheet2_vfx09c.webp",
+      luxeheritageImage,
     description:
       "Experience the perfect blend of sustainability and luxury with the LuxeHeritage Denim Bedsheet. Crafted from upcycled denim and repurposed fabrics, this unique bedding set features a stunning patchwork design that merges rich indigo tones with vibrant African prints. Set in a plush, Ghanaian-inspired bedroom, it embodies eco-conscious living without compromising on style and comfort.",
     features: {
