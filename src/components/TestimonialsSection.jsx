@@ -1,42 +1,51 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion} from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import slide3 from "../images/slide3.jpeg";
+import side1 from "../images/side1.jpeg";
+import test3 from "../images/test3.jpeg";
+
+
+
 
 const testimonials = [
   {
     id: 1,
-    name: "Abena Nketsia",
+    name: "Victory Angel Prep Sch",
     image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png",
-
-    text: "The eco-friendly backpack is amazing! Knowing it's made from recycled materials makes me feel great about my purchase. It's durable, stylish, and I love that each product helps reduce plastic waste.",
+    text: "The eco-friendly backpacks are amazing! They are durable, stylish, and comfortable. We love how it also projects our love for culture and ancestry. The students can't get over it. 🥰",
     rating: 5,
-    product: "Eco-Friendly Backpack",
+    product: "ThreadTrek Backpacks",
   },
   {
     id: 2,
-    name: "Kofi Adu",
-    image: "🤩",
-    text: "These bedsheets are incredibly soft and comfortable. Hard to believe they're made from recycled materials! The quality is outstanding, and I sleep better knowing I'm supporting sustainable practices.",
+    name: "Adusah View Hotel",
+    image: slide3,
+    text: "These bedsheets are incredibly soft and comfortable. Hard to believe they're made from recycled materials! The quality is outstanding, and our guests give positive reviews about them.",
     rating: 5,
-    product: "Recycled Bedsheets",
+    product: "EcoWeave Bedsheets",
   },
   {
     id: 3,
     name: "Yaw Mintah",
-    image: "😃",
+    image: test3,
+        // image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1742486074/UNDP_1_of_1_-9_gmqois.jpg",
+
     text: "The sustainable backpack is perfect for my daily commute. It's spacious, water-resistant, and I've received so many compliments. Love that it's made from recycled plastic waste!",
     rating: 4,
-    product: "Eco-Friendly Backpack",
+    product: "FlexRub Backpack",
   },
   {
     id: 4,
     name: "Sarah Boadi",
-    image: "🥰",
+    image: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1742486040/UNDP_1_of_1_-11_rtz0st.jpg",
     text: "The bedding set exceeded my expectations. They're not just eco-friendly, but genuinely luxurious. Washing well after months of use, and still feels like new. Great investment in sustainable living!",
     rating: 5,
-    product: "Recycled Bedsheets",
+    product: "LuxeHeritage Bedsheets",
   },
 ];
+
+
 
 const TestimonialCard = ({ testimonial, index }) => {
   const [ref, inView] = useInView({
@@ -44,9 +53,9 @@ const TestimonialCard = ({ testimonial, index }) => {
     threshold: 0.1,
   });
 
-   // Function to check if the image is a URL or emoji
   const renderImage = (image) => {
-    if (image.startsWith('http')) {
+    // Check if it's a URL (starts with http)
+    if (typeof image === 'string' && image.startsWith('http')) {
       return (
         <img 
           src={image} 
@@ -54,11 +63,23 @@ const TestimonialCard = ({ testimonial, index }) => {
           className="w-12 h-12 rounded-full object-cover"
         />
       );
-    } else {
+    }
+    // Check if it's an emoji (string with emoji characters)
+    else if (typeof image === 'string' && /[\u{1F300}-\u{1F9FF}]/u.test(image)) {
       return (
         <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-2xl">
           {image}
         </div>
+      );
+    }
+    // Handle imported image modules (default case)
+    else {
+      return (
+        <img 
+          src={image} 
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover"
+        />
       );
     }
   };
