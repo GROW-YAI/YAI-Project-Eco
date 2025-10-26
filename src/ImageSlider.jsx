@@ -22,7 +22,7 @@ const slides = [
       "Turning local waste into high-quality, sustainable products for everyday use",
   },
   {
-    url: slide3,
+    url: slide1,
     // url: "https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249875/i_want_an_image_of_a_pile_of_colorful_old_worn_out_clothes_1_l6xwx4.jpg",
     title: "Redefining Waste",
     subtitle:
