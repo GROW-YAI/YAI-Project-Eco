@@ -21,6 +21,9 @@ export default function About() {
     })
   };
 
+                        // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249929/i_want_an_image_of_a_pile_of_old_worn_out_clothes_1_u17vjr.jpg"
+
+
   return (
     <section className="py-16 bg-white overflow-hidden" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +81,8 @@ export default function About() {
                 className="relative aspect-square rounded-bl-3xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300"
               >
                 <img
-                  src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248459/ik7_hzqflc.png"
+                  // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248459/ik7_hzqflc.png"
+                  src="../src/images/left3.png"
                   alt="Sustainable bags"
                   className="w-full h-full object-cover"
                 />
@@ -93,7 +97,8 @@ export default function About() {
                 className="relative aspect-square rounded-br-3xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300"
               >
                 <img
-                  src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png"
+                  // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png"
+                  src="../src/images/left1.jpeg"
                   alt="Sustainable fashion products"
                   className="w-full h-full object-cover"
                 />
