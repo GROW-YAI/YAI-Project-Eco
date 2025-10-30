@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Check } from 'lucide-react';
+import left1 from '../images/left1.jpeg';
+import left3 from '../images/left3.png';
 
 export default function About() {
   const [ref, inView] = useInView({
@@ -82,7 +84,7 @@ export default function About() {
               >
                 <img
                   // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248459/ik7_hzqflc.png"
-                  src="../src/images/left3.png"
+                  src={left3}
                   alt="Sustainable bags"
                   className="w-full h-full object-cover"
                 />
@@ -98,7 +100,7 @@ export default function About() {
               >
                 <img
                   // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740248372/ik3_ngq9i8.png"
-                  src="../src/images/left1.jpeg"
+                  src={left1}
                   alt="Sustainable fashion products"
                   className="w-full h-full object-cover"
                 />
