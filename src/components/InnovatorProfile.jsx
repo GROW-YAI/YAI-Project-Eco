@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { X } from "lucide-react";
+import side1 from '../images/side1.jpeg';
 
 function InnovatorProfile() {
   const [ref, inView] = useInView({
@@ -72,7 +73,7 @@ function InnovatorProfile() {
                   >
                     <img
                       // src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1740249929/i_want_an_image_of_a_pile_of_old_worn_out_clothes_1_u17vjr.jpg"
-                      src="../src/images/side1.jpeg"
+                      src={side1}
                       alt="Plastic Waste"
                       className="w-full h-48 object-cover transform transition-transform group-hover:scale-110 duration-500"
                     />
