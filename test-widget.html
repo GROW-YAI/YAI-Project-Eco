@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boafo Widget Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    .test-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h1 { color: #333; }
+    p { color: #666; }
+  </style>
+</head>
+<body>
+  <div class="test-content">
+    <h1>Boafo Widget Test Page</h1>
+    <p>This is a test page to verify the Boafo accessibility widget is working.</p>
+    <p>The widget should appear in the bottom-right corner of your browser window.</p>
+    <p>Check the browser console for loading messages.</p>
+  </div>
+
+  <!-- Boafo Accessibility Widget Script -->
+  <script
+    src="https://unpkg.com/boafo-accessibility-widget/public/widget.bundle.js"
+    data-api-key="boafo_5678"
+    defer
+  ></script>
+</body>
+</html>
