@@ -115,32 +115,32 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:w-1/2 space-y-8"
             >
-              <h2 className="text-4xl sm:text-5xl font-['Playfair_Display'] font-bold text-black leading-[1.2] tracking-tight">
+              <h2 className="text-left text-4xl sm:text-5xl font-['Playfair_Display'] font-bold text-black leading-[1.2] tracking-tight">
                 Transforming Waste into Sustainable Fashion
               </h2>
               
-              <p className="text-black/80 font-['Playfair_Display'] text-lg leading-relaxed">
+              <p className="text-black/80 font-['Playfair_Display'] text-lg leading-relaxed text-left">
                 At Ike-Dian Fashion, we're revolutionizing the fashion industry by transforming environmental challenges into sustainable solutions. We collect plastic waste and worn-out textiles, giving them new life as beautiful, durable fashion items that make a difference.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <Check className="text-[#00A4AC] w-6 h-6 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-[#00A4AC]  font-['Playfair_Display']">
+                  <p className="text-left text-lg text-[#00A4AC]  font-['Playfair_Display']">
                     Converting plastic waste into durable, stylish backpacks and tote bags
                   </p>
                 </div>
                 
                 <div className="flex items-start gap-4">
                   <Check className="text-[#00A4AC] w-6 h-6 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-[#00A4AC] font-['Playfair_Display']">
+                  <p className="text-left text-lg text-[#00A4AC] font-['Playfair_Display']">
                     Transforming old textiles into premium bedsheets and home accessories
                   </p>
                 </div>
                 
                 <div className="flex items-start gap-4">
                   <Check className="text-[#00A4AC] w-6 h-6 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-[#00A4AC] font-['Playfair_Display']">
+                  <p className="text-left text-lg text-[#00A4AC] font-['Playfair_Display']">
                     Reducing environmental impact while creating employment opportunities
                   </p>
                 </div>
@@ -152,7 +152,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="pt-4"
               >
-                <p className="text-black/70 font-['Playfair_Display']  font-bold text-lg italic">
+                <p className="text-black/70 font-['Playfair_Display']  font-bold text-lg italic text-left">
                   "Every piece tells a story of transformation and hope for a sustainable future."
                 </p>
               </motion.div>

@@ -37,7 +37,7 @@ function InnovatorProfile() {
             className="lg:w-1/2 flex flex-col"
           >
             <div className="order-1">
-              <h2 className="text-3xl font-['Playfair_Display']  font-bold text-gray-900 mb-6">
+              <h2 className="text-left text-3xl font-['Playfair_Display']  font-bold text-gray-900 mb-6">
                 The Architect of Change
               </h2>
               <p className="text-lg  text-gray-600 leading-relaxed mb-6">

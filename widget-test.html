@@ -89,7 +89,9 @@
     const script = document.createElement('script');
     script.src = 'https://unpkg.com/boafo-accessibility-widget/public/widget.bundle.js';
     script.defer = true;
-    script.setAttribute('data-api-key', 'boafo_5678');
+    // For development: Replace BOAFO_API_KEY with your actual API key from .env file
+    // For production: Use build-time environment variable injection
+    script.setAttribute('data-api-key', 'BOAFO_API_KEY');
     
     script.onload = () => {
       console.log('✅ Boafo widget script loaded successfully');
