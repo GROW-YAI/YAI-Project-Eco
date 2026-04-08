@@ -249,9 +249,10 @@ function Contact() {
                 <h3 className="text-left text-lg font-bold">
                   Transform With Us
                   </h3>
-                <p className="text-white/90">Ready to support eco-fashion? Let's create sustainable style together.</p>
-                <a href="#contact" className="inline-block bg-white text-[#1A959C] px-6 py-3 rounded-md hover:bg-gray-100 transition-colors duration-300 font-medium text-center">
-                  Connect Today
+                <p className="text-white/90 text-left">Ready to support eco-fashion? Let's create sustainable style together.</p>
+                <a href="#contact" className="inline-block bg-white text-[#1A959C] px-6 py-3 rounded-md hover:bg-gray-100 transition-colors duration-300 font-medium text-left">
+                <h3 className="text-left text-lg font-bold">Connect Today </h3>
+            
                 </a>
               </div>
             </div>
