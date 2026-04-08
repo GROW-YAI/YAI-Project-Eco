@@ -23,7 +23,7 @@ Ike-Dian Fashion is a sustainable fashion e-commerce website that revolutionizes
 7. **Contact Form**: Easy way to reach out (powered by EmailJS)
 8. **Boafo Accessibility Widget**: Makes the site accessible to all users
 
-### Technologies Used
+### Tech Stack
 
 - **Frontend Framework**: React 19
 - **Build Tool**: Vite 6
@@ -38,12 +38,7 @@ Ike-Dian Fashion is a sustainable fashion e-commerce website that revolutionizes
 
 ### Accessibility
 
-This website uses the **Boafo Accessibility Widget** to ensure the site is accessible to all users, including those with disabilities. The widget provides features like:
-- Screen reader support
-- Keyboard navigation
-- High contrast modes
-- Font size adjustments
-- And more accessibility options
+This website integrates the **Boafo Accessibility Widget** to ensure the site is accessible to all users, including those with disabilities. The widget provides features like screen reader support, keyboard navigation, high contrast modes, font size adjustments, and more accessibility options.
 
 ---
 
@@ -58,244 +53,44 @@ To use the Boafo Accessibility Widget, you need to obtain an API key:
 5. Generate a new API key
 6. Copy the API key for use in your project
 
-**Important**: Keep your API key secure and never commit it directly to version control.
-
 ---
 
-## How to Integrate the Boafo Widget
+## Boafo Widget Integration Guide
 
-### Step 1: Install the Package
-
-```bash
-npm install boafo-accessibility-widget
-```
-
-### Step 2: Create a Client Component
-
-Create a file at `app/components/BoafoWidgetInitializer.tsx`:
-
-```tsx
-"use client";
-
-import { useEffect } from "react";
-import { initializeBoafoWidget } from "boafo-accessibility-widget";
-
-export default function BoafoWidgetInitializer() {
-  useEffect(() => {
-    const BOAFO_API_KEY = process.env.NEXT_PUBLIC_BOAFO_API_KEY;
-    if (BOAFO_API_KEY) {
-      initializeBoafoWidget(BOAFO_API_KEY);
-    } else {
-      console.warn("Boafo API key not found. Please set NEXT_PUBLIC_BOAFO_API_KEY in your .env file.");
-    }
-  }, []);
-
-  return null;
-}
-```
-
-### Step 3: Import and Use in Layout
-
-Import and use `BoafoWidgetInitializer` inside `app/layout.tsx`:
-
-```tsx
-import BoafoWidgetInitializer from './components/BoafoWidgetInitializer';
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        {children}
-        <BoafoWidgetInitializer />
-      </body>
-    </html>
-  );
-}
-```
-
-### Step 4: TypeScript Support
-
-Create `src/types/global.d.ts` with the module declaration:
-
-```typescript
-declare module "boafo-accessibility-widget" {
-  export function initializeBoafoWidget(apiKey: string): void;
-}
-
-declare namespace NodeJS {
-  interface ProcessEnv {
-    NEXT_PUBLIC_BOAFO_API_KEY: string;
-    VITE_BOAFO_API_KEY: string;
-  }
-}
-```
-
-Update `tsconfig.json` to include `src/types`:
-
-```json
-{
-  "include": ["**/*.ts", "**/*.tsx", "src/types"]
-}
-```
-
-### Step 5: Static HTML Integration
-
-For static HTML files, add the Boafo script tag using `data-api-key`:
-
-```html
-<!-- For development: Replace BOAFO_API_KEY with your actual API key from .env file -->
-<!-- For production: Use build-time environment variable injection -->
-<script
-  src="https://unpkg.com/boafo-accessibility-widget/public/widget.bundle.js"
-  data-api-key="BOAFO_API_KEY"
-  defer
-></script>
-```
+For detailed integration instructions, refer to the official guide:
+[Boafo Widget Integration Guide](https://drive.google.com/file/d/1tvwK-sBZI2a4uldd6z5LD1iLblSl3WbG/view?usp=sharing)
 
 ---
 
 ## Setup Instructions
 
-### Prerequisites
+Follow these steps to set up and run the project locally:
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Git
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/GROW-YAI/YAI-Project-Eco.git
+   cd YAI-Project-Eco
+   ```
 
-### Installation Steps
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-1. **Clone the Repository**
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
 
-```bash
-git clone https://github.com/GROW-YAI/YAI-Project-Eco.git
-cd YAI-Project-Eco
-```
+4. **Configure your Boafo API key**
+   - Open the `.env` file
+   - Replace `YOUR_BOAFO_API_KEY_HERE` with your actual API key from boafo.co
 
-2. **Install Dependencies**
+5. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm install
-```
-
-3. **Set Up Environment Variables**
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-4. **Add Your API Key**
-
-Open the `.env` file and replace the placeholder with your actual Boafo API key:
-
-```env
-NEXT_PUBLIC_BOAFO_API_KEY=your_actual_boafo_api_key_here
-VITE_BOAFO_API_KEY=your_actual_boafo_api_key_here
-```
-
-5. **Run the Development Server**
-
-```bash
-npm run dev
-```
-
-6. **Open in Browser**
-
-Navigate to `http://localhost:5173` (or the port shown in your terminal)
-
-### Building for Production
-
-```bash
-npm run build
-```
-
-The built files will be in the `dist` directory.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
----
-
-## Project Structure
-
-```
-├── app/
-│   ├── components/
-│   │   ├── BoafoWidgetInitializer.tsx
-│   │   └── features/
-│   │       ├── navbar.tsx
-│   │       └── footer.tsx
-│   ├── globals.css
-│   └── layout.tsx
-├── src/
-│   ├── components/
-│   │   ├── About.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Gallery.jsx
-│   │   ├── InnovatorProfile.jsx
-│   │   ├── Layout.jsx
-│   │   ├── Products.jsx
-│   │   └── TestimonialsSection.jsx
-│   ├── images/
-│   ├── pages/
-│   │   └── Home.jsx
-│   ├── types/
-│   │   └── global.d.ts
-│   ├── App.jsx
-│   ├── ImageSlider.jsx
-│   ├── main.jsx
-│   ├── App.css
-│   └── index.css
-├── public/
-├── .env.example
-├── .gitignore
-├── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.js
-```
-
----
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_BOAFO_API_KEY` | Boafo API key for Next.js applications | Yes |
-| `VITE_BOAFO_API_KEY` | Boafo API key for Vite applications | Yes |
-
----
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## License
-
-This project is private and proprietary.
-
----
-
-## Contact
-
-For questions or inquiries, please reach out through the contact form on the website.
-
----
-
-## Acknowledgments
-
-- [Boafo](https://boafo.co) for providing the accessibility widget
-- [React](https://react.dev/) for the frontend framework
-- [Vite](https://vitejs.dev/) for the build tool
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [Framer Motion](https://www.framer.com/motion/) for animations
+6. **Verify the widget loads**
+   - Open your browser to the URL shown in the terminal (typically http://localhost:5173)
+   - Confirm that the Boafo Accessibility Widget appears on the site
