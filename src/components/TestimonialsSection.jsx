@@ -97,8 +97,8 @@ const TestimonialCard = ({ testimonial, index }) => {
         <div className="relative w-12 h-12 mr-4 flex items-center justify-center text-3xl">
           {renderImage(testimonial.image)}
         </div>
-        <div>
-          <h3 className="font-['Playfair_Display']  text-lg font-semibold text-gray-900">
+        <div className="text-left">
+          <h3 className="font-['Playfair_Display'] text-lg font-semibold text-gray-900">
             {testimonial.name}
           </h3>
           <p className="text-sm text-emerald-600 font-['Playfair_Display'] font-medium">
@@ -106,7 +106,7 @@ const TestimonialCard = ({ testimonial, index }) => {
           </p>
         </div>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-left">
         {[...Array(5)].map((_, i) => (
           <span
             key={i}
@@ -118,7 +118,7 @@ const TestimonialCard = ({ testimonial, index }) => {
           </span>
         ))}
       </div>
-      <p className="text-gray-700   leading-relaxed">{testimonial.text}</p>
+      <p className="text-gray-700 leading-relaxed text-left">{testimonial.text}</p>
     </motion.div>
   );
 };

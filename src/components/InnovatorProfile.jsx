@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { X } from "lucide-react";
@@ -11,6 +11,26 @@ function InnovatorProfile() {
   });
 
   const [showModal, setShowModal] = useState(false);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [showModal]);
 
   const fullBio = `Isaac Osei is a forward-thinking entrepreneur from Ejura, Ashanti Region, committed to transforming waste into valuable products. Driven by the growing challenges of improper waste disposal, limited recycling options, and inefficient waste collection in his community, Isaac saw an opportunity to turn discarded materials into sustainable solutions. Through his innovative approach, he repurposes waste rubbers and second-hand garments to create durable school bags for students and high-quality bed sheets for hotels. His work not only reduces environmental pollution but also promotes a circular economy, giving waste a second life while addressing critical social and economic needs. Operating in the Industrial sector, Isaac is on a mission to scale production, improve waste management systems, and expand his impact. With the right support, he aims to create a more sustainable future for his community and beyond, proving that waste can be a resource when innovation meets purpose.`;
 
@@ -37,10 +57,10 @@ function InnovatorProfile() {
             className="lg:w-1/2 flex flex-col"
           >
             <div className="order-1">
-              <h2 className="text-left text-3xl font-['Playfair_Display']  font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-6 text-left">
                 The Architect of Change
               </h2>
-              <p className="text-lg  text-gray-600 leading-relaxed mb-6">
+              <p className="text-lg text-gray-600 leading-relaxed mb-6 text-left">
                 {truncatedBio}
               </p>
 
@@ -162,12 +182,12 @@ function InnovatorProfile() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 z-50 flex items-start justify-center pt-10 px-4 pb-4"
             onClick={() => setShowModal(false)}
           >
-            {/* Background with innovator image and blur effect */}
+            {/* Background overlay with blur effect */}
             <div
-              className="fixed inset-0 bg-cover bg-center"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
               style={{
                 backgroundImage: `url(https://res.cloudinary.com/dmxzxo1fk/image/upload/v1741629137/WhatsApp_Image_2025-03-10_at_08.23.36_cc4vbb.jpg)`,
                 backgroundSize: "cover",
@@ -177,43 +197,45 @@ function InnovatorProfile() {
             />
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full p-8 overflow-y-auto max-h-[90vh]"
+              initial={{ scale: 0.9, opacity: 0, y: -20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: -20 }}
+              className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
                 aria-label="Close modal"
               >
                 <X size={24} />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <motion.div
-                    className="relative w-full overflow-hidden rounded-lg"
-                    style={{ aspectRatio: "3/4" }}
-                  >
-                    <img
-                      src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1741629137/WhatsApp_Image_2025-03-10_at_08.23.36_cc4vbb.jpg"
-                      alt="Lead Innovator"
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                </div>
+              <div className="p-8 pt-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <motion.div
+                      className="relative w-full overflow-hidden rounded-lg"
+                      style={{ aspectRatio: "3/4" }}
+                    >
+                      <img
+                        src="https://res.cloudinary.com/dmxzxo1fk/image/upload/v1741629137/WhatsApp_Image_2025-03-10_at_08.23.36_cc4vbb.jpg"
+                        alt="Lead Innovator"
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  </div>
 
-                <div>
-                  <h3 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-4">
-                    Isaac Osei
-                  </h3>
-                  <p className="text-[#1A959C] font-['Playfair_Display'] font-medium mb-6">
-                    Chief Innovation Officer
-                  </p>
-                  <div className="prose prose-lg">
-                    <p className="text-gray-600 leading-relaxed">{fullBio}</p>
+                  <div className="text-left">
+                    <h3 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-4 text-left">
+                      Isaac Osei
+                    </h3>
+                    <p className="text-[#1A959C] font-['Playfair_Display'] font-medium mb-6 text-left">
+                      Chief Innovation Officer
+                    </p>
+                    <div className="prose prose-lg">
+                      <p className="text-gray-600 leading-relaxed text-left">{fullBio}</p>
+                    </div>
                   </div>
                 </div>
               </div>
