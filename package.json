@@ -12,7 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.0.7",
-    "boafo-accessibility-widget": "^1.1.8",
+    "boafo-accessibility-widget": "^1.1.6",
     "framer-motion": "^12.4.4",
     "lucide-react": "^0.475.0",
     "masonry-layout": "^4.2.2",
