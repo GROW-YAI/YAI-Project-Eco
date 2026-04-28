@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -169,6 +169,26 @@ const products = [
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [selectedProduct]);
+
   const handlePaystackPayment = (productLink) => {
     window.open(productLink, "_blank");
   };
@@ -230,12 +250,12 @@ export default function Products() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 flex items-center justify-center p-4 z-50"
+              className="fixed inset-0 z-50 flex items-start justify-center pt-10 px-4 pb-4"
               onClick={() => setSelectedProduct(null)}
             >
-              {/* Background with product image and blur effect */}
+              {/* Background overlay with blur effect */}
               <div
-                className="fixed inset-0 bg-cover bg-center"
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm"
                 style={{
                   backgroundImage: `url(${selectedProduct.image})`,
                   backgroundSize: "cover",
@@ -245,96 +265,98 @@ export default function Products() {
               />
 
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full p-8 overflow-y-auto max-h-[90vh]"
+                initial={{ scale: 0.9, opacity: 0, y: -20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: -20 }}
+                className="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   onClick={() => setSelectedProduct(null)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10"
                   aria-label="Close modal"
                 >
                   <X size={24} />
                 </button>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <motion.img
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      src={selectedProduct.image}
-                      alt={selectedProduct.title}
-                      className="w-full h-[300px] object-cover rounded-lg shadow-lg"
-                    />
-                  </div>
-
-                  <div>
-                    <h3 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-4">
-                      {selectedProduct.title}
-                    </h3>
-                    <p className="text-gray-600 text-lg mb-6 ">
-                      {selectedProduct.description}
-                    </p>
-
-                    {/* Product Features */}
-                    <div className="grid grid-cols-2 gap-4 mb-8">
-                      <div className="flex items-center space-x-2">
-                        <Recycle className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">
-                          {selectedProduct.features.materials}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Star className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">
-                          {selectedProduct.features.quality}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Leaf className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">
-                          {selectedProduct.features.eco}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Tool className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm">
-                          {selectedProduct.features.crafting}
-                        </span>
-                      </div>
+                <div className="p-8 pt-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <motion.img
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        src={selectedProduct.image}
+                        alt={selectedProduct.title}
+                        className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+                      />
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <Shield className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm font-medium">
-                          Quality Guaranteed
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Heart className="text-[#00A4AC]" size={20} />
-                        <span className="text-sm font-medium">
-                          Made with Love
-                        </span>
-                      </div>
-                    </div>
+                    <div className="text-left">
+                      <h3 className="text-3xl font-['Playfair_Display'] font-bold text-gray-900 mb-4 text-left">
+                        {selectedProduct.title}
+                      </h3>
+                      <p className="text-gray-600 text-lg mb-6 text-left">
+                        {selectedProduct.description}
+                      </p>
 
-                    <div className="mt-8 flex items-center justify-between">
-                      <span className="text-3xl font-['Playfair_Display'] font-bold text-[#00A4AC]">
-                        GH₵{selectedProduct.price}
-                      </span>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() =>
-                          handlePaystackPayment(selectedProduct.paystackLink)
-                        }
-                        className="bg-[#00A4AC] text-white  font-['Playfair_Display'] px-8 py-3 rounded-lg font-medium hover:bg-[#00A4AC]/90 transition-colors"
-                      >
-                        Shop Now
-                      </motion.button>
+                      {/* Product Features */}
+                      <div className="grid grid-cols-2 gap-4 mb-8">
+                        <div className="flex items-center space-x-2">
+                          <Recycle className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm text-left">
+                            {selectedProduct.features.materials}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Star className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm text-left">
+                            {selectedProduct.features.quality}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Leaf className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm text-left">
+                            {selectedProduct.features.eco}
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Tool className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm text-left">
+                            {selectedProduct.features.crafting}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <Shield className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm font-medium">
+                            Quality Guaranteed
+                          </span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Heart className="text-[#00A4AC]" size={20} />
+                          <span className="text-sm font-medium">
+                            Made with Love
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="mt-8 flex items-center justify-between">
+                        <span className="text-3xl font-['Playfair_Display'] font-bold text-[#00A4AC]">
+                          GH₵{selectedProduct.price}
+                        </span>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() =>
+                            handlePaystackPayment(selectedProduct.paystackLink)
+                          }
+                          className="bg-[#00A4AC] text-white font-['Playfair_Display'] px-8 py-3 rounded-lg font-medium hover:bg-[#00A4AC]/90 transition-colors"
+                        >
+                          Shop Now
+                        </motion.button>
+                      </div>
                     </div>
                   </div>
                 </div>
